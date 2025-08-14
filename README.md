@@ -7,3 +7,6 @@ Question 02: How many types of data types are there?
 Question 03: What are variables, and how can they be declared?
 Question 04: What is the difference between null and undefined?
 Question 05: Explain all types of operators.
+
+
+Question:06 what is logical operators in Javascript?
