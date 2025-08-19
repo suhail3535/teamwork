@@ -79,3 +79,59 @@ Using a `switch`, print:
 ### 8. **Simple Calculator**
 
 Write a calculator program using `switch` that performs addition, subtraction, multiplication, and division based on the operator entered (`+`, `-`, `*`, `/`).
+
+
+<!-- Array in Javascript -->
+
+<!-- Assignments on Arrays & Methods -->
+
+<!-- 1. Basic Array Assignments** -->
+
+<!-- 1. Create an array of numbers from 1 to 10. Print all numbers using: -->
+
+   <!-- * `for` loop
+   * `for...of` loop
+   * `forEach()`
+2. Create an array of fruits and print each fruit in **uppercase**.
+3. Find the **sum of all numbers** in an array using `forEach()`. -->
+
+---
+
+<!-- ### **2. Assignments using `map()`**
+
+1. Given an array `[2, 4, 6, 8]`, create a new array where each number is **doubled**.
+2. Convert an array of names `["suhail", "khan", "rahul"]` into an array of **capitalized names** (`["Suhail", "Khan", "Rahul"]`).
+3. Given an array of numbers, return a new array with the **square** of each number.
+
+---
+
+### **3. Assignments using `filter()`**
+
+1. Given an array of numbers `[5, 12, 8, 130, 44]`, filter out numbers **less than 10**.
+2. From an array of ages `[12, 17, 18, 24, 30]`, filter only the ages **eligible to vote** (18+).
+3. Given an array of words `["pen", "notebook", "pencil", "book"]`, filter words that have **length > 4**.
+4. From an array of numbers `[1,2,3,4,5,6,7,8,9,10]`, filter only **even numbers**.
+
+---
+
+### **4. Combination of `map()` and `filter()`**
+
+1. From an array `[1,2,3,4,5,6,7,8,9,10]` →
+
+   * First filter only **even numbers**
+   * Then return their **squares**.
+2. Given an array of student objects:
+
+   ```js
+   let students = [
+     { name: "Suhail", marks: 85 },
+     { name: "Rahul", marks: 45 },
+     { name: "Aman", marks: 65 }
+   ];
+   ```
+
+   * Filter students with marks **>= 50**
+   * Create a new array of only their **names in uppercase**.
+
+---
+ -->
