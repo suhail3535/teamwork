@@ -120,3 +120,18 @@ Write a calculator program using `switch` that performs addition, subtraction, m
      { name: "Rahul", marks: 45 },
      { name: "Aman", marks: 65 }
    ];
+=================Object===================
+1-What is an object in ?
+
+2-How is an object different from a class?
+
+3-How do you create an object in your language?
+
+4-What are object properties and methods?
+
+5-How do you access object properties (dot vs bracket notation)?
+
+6-What is the difference between primitive types and objects?
+
+7-Can you add or remove properties from an object dynamically and how?
+
