@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="container">This is Class-01 example id hello  </div>
+    <p class="para">This is Class-01 example class  world</p>
+    <p class="para">This is Class-01 example class  world para-02</p>
+    <p>This is Paragraph</p>
+    <div id="content">This is changing content</div>
+    <div id="newElement">I am new element and below is my child:</div>
+
+
+
+    <div id="card-container">
+<!-- //image
+title
+description
+price
+button -->
+
+
+    </div>
+</body>
+
+<script>
+
+
+
+//How to select elements in DOM
+//1-By Id
+//let elements=document.getElementById("container"); 
+
+//2-By Class Name
+//let elements=document.getElementsByClassName("para");
+
+//console.log('element--',elements[0].innerText); 
+
+//(c) By Tag
+
+
+//let paras = document.getElementsByTagName("p"); -->
+//console.log('paras--', paras); // Output: Second
+//console.log(paras[0].innerText); // Output: Second
+
+//(d) Query Selector
+
+//let element = document.querySelector("#container"); -->
+//let para = document.querySelector(".para");
+//console.log('element--', element.innerText); // Output: This is Class-01 example id
+//console.log('para--', para.innerText); // Output: This is Class-01 example
+//(e) Query Selector All
+//let paras = document.querySelectorAll(".para");
+//console.log('paras--', paras); // Output: Second
+
+//------------------------3. Changing Content----------------------
+
+//let content=document.getElementById("content");
+//content.innerText="This is changing content -2";
+//console.log('content--',content.innerText); // Output: This is changing content
+
+//-----------------4. Changing Styles-----------
+//let content=document.getElementById("content");
+//content.style.color="red";
+//content.style.backgroundColor="yellow";
+//content.style.fontSize="30px";
+//content.style.padding="10px";
+
+//==================5. Creating and Adding Elements===========
+///let parentElement=document.getElementById("newElement");
+///let container=document.getElementById("container");
+///let h1=document.createElement("h1");
+///h1.innerText="This is new Element h1";
+///let h2=document.createElement("h2");
+//h2.innerText="This is new Element h2";
+//let h3=document.createElement("h3");
+//h3.innerText="This is new Element h3";
+//parentElement.append(h3);
+//container.append(h2,h1);
+
+//==================Card By Javascript=============
+
+let cardContainer=document.getElementById("card-container");
+let div=document.createElement("div");
+div.style.border="1px solid black";
+div.style.width="250px";
+div.style.padding="10px";
+let image=document.createElement("img");
+image.src="https://tse4.mm.bing.net/th/id/OIP.v1sJTkkilRxhlxHGM4MZ8wHaE8?pid=Api&P=0&h=180";
+image.alt="Placeholder Image";
+image.style.width="100%";
+let title=document.createElement("h2");
+title.innerText="Maruti Suzuki";
+
+let description=document.createElement("p");
+description.innerText="This is a description of the car.";
+let price=document.createElement("p");
+price.innerText="Price: $20,000";
+
+let button=document.createElement("button");
+button.innerText="Buy Now";
+button.style.padding="10px 20px";
+button.style.backgroundColor="blue";    
+
+div.append(image,title,description,price,button);
+cardContainer.append(div);
+
+
+
+
+
+
+</script>
+</html>
