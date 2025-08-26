@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #card-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            padding: 10px;
+        }
+
+        #card-container div {
+            border: 1px solid gray;
+            padding: 10px;
+            text-align: center;
+        }
+
+        #card-container img {
+            width: 100%;
+
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="card-container"></div>
+</body>
+<script src="./card.js"></script>
+
+</html>

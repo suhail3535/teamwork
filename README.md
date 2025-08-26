@@ -135,3 +135,10 @@ Write a calculator program using `switch` that performs addition, subtraction, m
 
 7-Can you add or remove properties from an object dynamically and how?
 
+<!-- ===============Assignment=================== -->
+
+1-what DOM manipulation?
+2-List all event listeners in JavaScript? 3-create a webpage using a data object array dynamically?
+5-add or remove elements in JavaScript, use the input tag, and understand.?
+6- how to access elements from html list all methods?
+7- how to create an element by javascript? how to remove an element by javascript

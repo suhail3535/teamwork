@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="list">
+  <li>Apple</li>
+  <li id="removeMe">Banana</li>
+</ul>
+
+<button id="btn">Click Me</button>
+<p id="msg">result</p>
+
+<h1>How to get value from input tag</h1>
+<hr>
+<input type="text" id="nameInput" placeholder="Enter your name">
+<p id="paragraph">Result here</p>
+<button onclick="callEvent()">Submit</button>
+
+
+
+</body>
+<script>
+let btn = document.getElementById("btn");
+btn.addEventListener("click",function(){
+   let msg = document.getElementById("msg");
+   msg.innerText = "Button Clicked";
+})
+<!-- ----------------------- -->
+  /* this is way -01 */
+let input = document.getElementById("nameInput");
+
+/* input.addEventListener("change",function(event){
+    console.log("event",event.target.value);
+    console.log("input value",input.value);
+}) */
+
+/* this is way -02 */
+ function callEvent(event){
+    let paragraph = document.getElementById("paragraph");
+    paragraph.innerText="Hello from javascript"
+   
+ }
+
+
+
+
+
+</script>
+</html>
