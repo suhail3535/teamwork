@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        th,
+        td,button {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>localStorage</h1>
+    <h2 id="userName"></h2>
+
+    <h1>4. Storing Objects in Storage</h1>
+    <p>Local Storage can only store strings. To store objects, we need to convert them to a string using
+        JSON.stringify() when saving, and parse them back to an object using JSON.parse() when retrieving.</p>
+    <hr>
+    <table>
+        <thead>
+            <tr>
+                <th>Sr.No</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="dataBody">
+            <!-- render data here -->
+        </tbody>
+    </table>
+
+
+
+
+</body>
+<script>
+    let object = {
+        name: "Maneesha",
+        email: "abc@gmail.com",
+        mobile: "1234567890"
+
+
+    }
+
+    let userdata = [
+        {
+            "name": "Alice Johnson",
+            "email": "alice.johnson@example.com"
+        },
+        {
+            "name": "Bob Smith",
+            "email": "bob.smith@example.com"
+        },
+        {
+            "name": "Charlie Lee",
+            "email": "charlie.lee@example.com"
+        },
+        {
+            "name": "Diana Lopez",
+            "email": "diana.lopez@example.com"
+        },
+        {
+            "name": "Ethan Brown",
+            "email": "ethan.brown@example.com"
+        }
+    ]
+
+    localStorage.setItem("maneesha", JSON.stringify(object));
+    localStorage.setItem("userData", JSON.stringify(userdata));
+    let allData = JSON.parse(localStorage.getItem("userData")) || [];
+    console.log(allData)
+
+    let dataBody = document.getElementById("dataBody");
+
+    function displayData() {
+        dataBody.innerHTML = "";
+        allData.forEach((item, index) => {
+            let row = document.createElement("tr");
+
+            let td1 = document.createElement("td");
+            td1.innerText = index + 1;
+            let td2 = document.createElement("td");
+            td2.innerText = item.name;
+            let td3 = document.createElement("td");
+            td3.innerText = item.email;
+            td4=document.createElement("td");
+            btn=document.createElement("button");
+            btn.innerText="Info";
+            td4.append(btn);
+            row.append(td1, td2, td3,td4);
+            dataBody.append(row);
+        })
+    }
+
+    displayData()
+
+
+
+</script>
+
+</html>

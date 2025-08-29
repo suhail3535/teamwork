@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Local Storage with Object</title>
+</head>
+<body>
+  <h2>Simple Form</h2>
+
+  <label>Name: </label>
+  <input type="text" id="name"><br><br>
+
+  <label>Email: </label>
+  <input type="email" id="email"><br><br>
+
+  <button onclick="saveData()">Save</button>
+
+  <table border="1" cellpadding="6" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Sr.No</th>
+        <th>Name</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody id="dataBody">
+      <!-- Data will be displayed here -->
+    </tbody>
+  </table>
+
+  <script>
+    // ✅ Load existing data (if any) once at start
+    let allData = JSON.parse(localStorage.getItem("user")) || [];
+
+    function saveData() {
+      const nameInput = document.getElementById("name");
+      const emailInput = document.getElementById("email");
+
+      
+
+      const user = {
+        name: nameInput.value,
+        email: emailInput.value
+      };
+
+      allData.push(user);                               // update in-memory array
+      localStorage.setItem("user", JSON.stringify(allData)); // persist
+
+      // Clear inputs
+      nameInput.value = "";
+      emailInput.value = "";
+
+      // Re-render table
+      displayData();
+    }
+
+    function displayData() {
+      const dataBody = document.getElementById("dataBody");
+      dataBody.innerHTML = "";
+
+      // ✅ Always use the current allData
+      allData.forEach((item, index) => {
+        const row = document.createElement("tr");
+
+        const td1 = document.createElement("td");
+        td1.textContent = index + 1;
+
+        const td2 = document.createElement("td");
+        td2.textContent = item.name;
+
+        const td3 = document.createElement("td");
+        td3.textContent = item.email;
+
+        row.append(td1, td2, td3);
+        dataBody.append(row);
+      });
+    }
+
+    // Initial render on page load
+    displayData();
+  </script>
+</body>
+</html>

@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Course Sign‑up</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+
+            --card: #0f1429;
+            --muted: #a3adc2;
+            --text: #e6e9f2;
+            --primary: #6ea8fe;
+            --primary-strong: #4d8dff;
+            --ring: rgba(109, 179, 255, 0.5);
+            --error: #ff6b6b;
+            --radius: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+            color: var(--text);
+        }
+
+        .wrapper {
+            width: 90%;
+            min-height: 50dvh;
+            display: flex;
+
+            justify-content: space-between;
+            padding: 20px;
+            gap: 40px;
+        }
+
+        .form-card {
+            width: 100%;
+            max-width: 560px;
+            background: linear-gradient(180deg, #0f1429 0%, #0b1020 100%);
+            border: 1px solid #1b2545;
+            border-radius: var(--radius);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+            overflow: hidden;
+        }
+
+        .header {
+            padding: 28px 28px 12px;
+            border-bottom: 1px solid #1a2240;
+        }
+
+        .title {
+            font-size: clamp(20px, 2.4vw, 26px);
+            font-weight: 700;
+            margin: 0 0 6px;
+            letter-spacing: .2px;
+        }
+
+        .subtitle {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        form {
+            width: 100%;
+            padding: 24px 28px 28px;
+        }
+
+        table {
+            width: 100%;
+            padding: 10px;;
+            margin-top: 40px;
+            border: 1px solid #1b2545;
+            color: blue;
+            border-radius: var(--radius);
+            border-collapse: collapse;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+        }
+
+        td,
+        th {
+            padding: 10px;
+        }
+
+        .grid {
+            display: grid;
+            gap: 18px;
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 520px) {
+            .grid.two {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            color: var(--muted);
+            margin: 0 0 8px;
+        }
+
+        .field {
+            position: relative;
+        }
+
+        .control {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 12px;
+            border: 1px solid #223059;
+            background: #0c1533;
+            color: var(--text);
+            outline: none;
+            font-size: 15px;
+            transition: border-color .2s ease, box-shadow .2s ease, transform .08s ease;
+        }
+
+        .control::placeholder {
+            color: #6e7895;
+        }
+
+        .control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 6px var(--ring);
+            transform: translateY(-1px);
+        }
+
+        .control:invalid[required] {
+            border-color: #2a375f;
+        }
+
+        .control.error {
+            border-color: var(--error);
+            box-shadow: 0 0 0 6px rgba(255, 107, 107, .2);
+        }
+
+        .hint {
+            margin-top: 6px;
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            justify-content: flex-end;
+            padding-top: 8px;
+        }
+
+        .btn {
+            appearance: none;
+            border: 0;
+            cursor: pointer;
+            font-weight: 600;
+            letter-spacing: .2px;
+            padding: 12px 16px;
+            border-radius: 14px;
+            transition: transform .08s ease, box-shadow .2s ease, background .2s ease;
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .btn.secondary {
+            background: #121a38;
+            color: var(--text);
+            border: 1px solid #1a254a;
+        }
+
+        .btn.secondary:hover {
+            box-shadow: 0 6px 18px rgba(0, 0, 0, .35), inset 0 0 0 1px rgba(255, 255, 255, .04);
+        }
+
+        .btn.primary {
+            background: linear-gradient(180deg, var(--primary) 0%, var(--primary-strong) 100%);
+            color: #0a1024;
+        }
+
+        .btn.primary:hover {
+            box-shadow: 0 8px 24px rgba(78, 141, 255, .35);
+        }
+
+        /* Tiny success banner */
+        .success {
+            display: none;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            margin: 0 28px 18px;
+            border-radius: 12px;
+            background: #112a19;
+            border: 1px solid #1e6a3b;
+            color: #a3e7b6;
+            font-size: 14px;
+        }
+
+        .success.show {
+            display: flex;
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+
+            .control,
+            .btn {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="wrapper">
+        <section class="form-card" aria-labelledby="formTitle">
+            <header class="header">
+                <h1 id="formTitle" class="title">Enroll in a Course</h1>
+                <p class="subtitle">Fill in your details below. We’ll reach out with the next steps.</p>
+            </header>
+
+            <div id="success" class="success" role="status" aria-live="polite">
+                ✅ Your form was submitted successfully!
+            </div>
+
+            <form id="signupForm" novalidate>
+                <div class="grid two">
+                    <div class="field">
+                        <label for="name">Full Name<span aria-hidden="true"> *</span></label>
+                        <input class="control" type="text" id="name" name="name" placeholder="e.g., Suhail Khan"
+                            autocomplete="name" required minlength="2" />
+                        <p class="hint">Use your real name as it will appear on certificates.</p>
+                    </div>
+
+                    <div class="field">
+                        <label for="email">Email<span aria-hidden="true"> *</span></label>
+                        <input class="control" type="email" id="email" name="email" placeholder="you@example.com"
+                            autocomplete="email" required />
+                        <p class="hint">We’ll keep this private.</p>
+                    </div>
+                </div>
+
+                <div class="grid">
+                    <div class="field">
+                        <label for="course">Course<span aria-hidden="true"> *</span></label>
+                        <select class="control" id="course" name="course" required>
+                            <option value="" disabled selected>Select a course</option>
+                            <option>Web Development</option>
+                            <option>Data Science</option>
+                            <option>UI/UX Design</option>
+                            <option>Mobile App Development</option>
+                            <option>Cloud & DevOps</option>
+                            <option>Other</option>
+                        </select>
+                        <p class="hint">Choose the track you’re interested in.</p>
+                    </div>
+                </div>
+
+                <div class="actions">
+
+                    <button type="submit" class="btn primary">Submit</button>
+                </div>
+            </form>
+        </section>
+
+        <table border="1" cellpadding="6" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Sr.No</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Course</th>
+                </tr>
+            </thead>
+            <tbody id="dataBody">
+                <!-- Data will be displayed here -->
+            </tbody>
+        </table>
+    </main>
+
+
+
+</body>
+
+<script>
+    ///retrieving the data from the local storage step-01
+    let allUserData = JSON.parse(localStorage.getItem('userDetails')) || []
+    ///accessing the form step-02
+    let signupForm = document.getElementById("signupForm");
+    signupForm.addEventListener("submit", function (e) {
+        e.preventDefault();///it used to prevent the default behaviour of the form
+
+        ///accessing the input values step-03
+        let nameInput = document.getElementById("name").value;
+        let emailInput = document.getElementById("email").value;
+        let courseInput = document.getElementById("course").value;
+        ///creating an object step-04
+        let user = {
+            name: nameInput,
+            email: emailInput,
+            course: courseInput
+        };
+        /////pushing the object into the array and saving it to the local storage step-05
+        allUserData.push(user);
+        localStorage.setItem("userDetails", JSON.stringify(allUserData));
+
+        signupForm.reset() ////reset the form after submission step-06
+        displayData()
+    });
+
+    ////// Displaying the data in the table step-07
+    let dataBody = document.getElementById("dataBody");
+    function displayData() {
+        dataBody.innerHTML = "";///clearing the table body before rendering the data
+        allUserData.forEach((item, index) => {
+            let row = document.createElement("tr");
+
+            let td1 = document.createElement("td");
+            td1.innerText = index + 1;
+
+
+            let td2 = document.createElement("td");
+            td2.innerText = item.name;
+
+
+            let td3 = document.createElement("td");
+            td3.innerText = item.email;
+
+            let td4 = document.createElement("td");
+            td4.innerText = item.course;
+
+            row.append(td1, td2, td3, td4);
+
+            dataBody.append(row);
+        });
+    }
+    displayData(); /////calling the function to display the data when the page loads step-08
+
+
+
+
+</script>
+
+</html>

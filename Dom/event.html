@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="list">
+        <li>Apple</li>
+        <li id="removeMe">Banana</li>
+    </ul>
+
+    <span>Event Listeners </span>7.
+    <h1>
+        Events = actions by the user (click, hover, keypress, etc.)
+    </h1>
+    <button id="btn">Click Me</button>
+    <p id="msg">this is button result</p>
+    <hr>
+    <hr>
+    8. Input Values
+    <input type="text" id="nameInput" placeholder="Enter your name">
+    <input type="email" id="EmailInput" placeholder="Enter your Email">
+  
+    <button onclick="showName()">Submit</button>
+    <p id="display"></p>
+
+</body>
+<script>
+    let eventBtn = document.getElementById("btn");
+    let msg = document.getElementById("msg");
+
+    eventBtn.addEventListener("click", function () {
+        console.log("Button Clicked");
+        alert("Button Clicked");
+        msg.innerText = "Hello from Maneesha";
+        msg.style.color = "red";
+    });
+
+
+
+    function showName() {
+        let nameInput = document.getElementById("nameInput");
+        let emailInput = document.getElementById("EmailInput");
+        let display = document.getElementById("display");
+        display.innerText = "Hello " + nameInput.value+", Your Email is "+emailInput.value;
+        console.log(EmailInput.value);
+        nameInput.value = "";
+    }
+
+
+
+</script>
+
+</html>
