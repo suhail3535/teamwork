@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Rejected Admission Details</h1>
+    <hr>
+    <table border="1" cellpadding="6" cellspacing="0">
+
+            <thead>
+                <tr>
+                    <th>Sr.No</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Course</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="dataBody">
+                <!-- Data will be displayed here -->
+            </tbody>
+        </table>
+</body>
+<script>
+     let allAcceptedData = JSON.parse(localStorage.getItem('rejected-form')) || [];
+    function displayData() {
+            dataBody.innerHTML = ""; ///clear table body
+            allAcceptedData.forEach((item, index) => {
+                let row = document.createElement("tr");
+
+                let td1 = document.createElement("td");
+                td1.innerText = index + 1;
+
+                let td2 = document.createElement("td");
+                td2.innerText = item.name;
+
+                let td3 = document.createElement("td");
+                td3.innerText = item.email;
+
+                let td4 = document.createElement("td");
+                td4.innerText = item.course;
+
+                
+
+                
+                
+
+              
+
+                row.append(td1, td2, td3, td4,);
+                dataBody.append(row);
+            });
+        }
+        displayData()
+</script>
+</html>

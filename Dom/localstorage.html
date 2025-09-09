@@ -13,6 +13,9 @@
             border-collapse: collapse;
             padding: 5px;
         }
+        button{
+            margin:2px;
+        }
     </style>
 </head>
 
@@ -93,9 +96,16 @@
             let td3 = document.createElement("td");
             td3.innerText = item.email;
             td4=document.createElement("td");
-            btn=document.createElement("button");
-            btn.innerText="Info";
-            td4.append(btn);
+            btn1=document.createElement("button");
+            btn1.innerText="Accepted";
+            td4.append(btn1);
+            btn2=document.createElement("button");
+            btn2.innerText="Rejected";
+            td4.append(btn2);
+            td5=document.createElement("td");
+            btn3=document.createElement("button");
+            btn3.innerText="Delete";
+            td4.append(btn3);
             row.append(td1, td2, td3,td4);
             dataBody.append(row);
         })

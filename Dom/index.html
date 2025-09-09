@@ -1,13 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Course Sign‑up</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
     <style>
         :root {
 
@@ -23,6 +22,12 @@
 
         * {
             box-sizing: border-box;
+        }
+
+
+        a {
+            text-decoration: none;
+            color: black;
         }
 
         html,
@@ -53,7 +58,6 @@
         .form-card {
             width: 100%;
             max-width: 560px;
-            background: linear-gradient(180deg, #0f1429 0%, #0b1020 100%);
             border: 1px solid #1b2545;
             border-radius: var(--radius);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.03);
@@ -229,9 +233,18 @@
             }
         }
     </style>
+
 </head>
 
 <body>
+    <div>
+
+        <a href="./accepted.html">Accepted Admission</a>
+        <a href="./rejected.html">Rejected Admission</a>
+    </div>
+    <h1>This is Home page</h1>
+    <hr>
+
     <main class="wrapper">
         <section class="form-card" aria-labelledby="formTitle">
             <header class="header">
@@ -280,15 +293,9 @@
                     <button type="submit" class="btn primary">Submit</button>
                 </div>
             </form>
-           
+
         </section>
-        <span id="totalForm"></span>
- <div>
-                <a href="./rejected"> Rejetct admission</a>
-                <a href="./rejected"> pending admission</a>
-                <a href="./rejected"> Accepted  admission</a>
-                
-            </div>
+
         <table border="1" cellpadding="6" cellspacing="0">
 
             <thead>
@@ -311,8 +318,7 @@
         ///retrieving the data from the local storage step-01
         let allUserData = JSON.parse(localStorage.getItem('userDetails')) || [];
         //// for total form
-        let totalForm = document.getElementById("totalForm")
-        totalForm.innerText = "Total Admission Forms" + " " + allUserData.length
+
         ///accessing the form step-02
         let signupForm = document.getElementById("signupForm");
         signupForm.addEventListener("submit", function (e) {
@@ -346,6 +352,7 @@
         function displayData() {
             dataBody.innerHTML = ""; ///clear table body
             allUserData.forEach((item, index) => {
+
                 let row = document.createElement("tr");
 
                 let td1 = document.createElement("td");
@@ -368,48 +375,46 @@
                 let btn1 = document.createElement("button");
                 btn1.innerText = "Accepted";
                 btn1.addEventListener("click", function () {
-                    addData("accepted-form", item)
-                    alert("Form Accepted Successfully");
+                    accpetData("admissionaccept", item)
+                    alert('buttun clicked')
                     deleteData(allUserData, index)
-
                 })
+
 
                 let btn2 = document.createElement("button");
                 btn2.innerText = "Rejected";
-                btn2.addEventListener("click", function () {
 
-                    deleteData(allUserData, index)
-                    alert("Form Rejected Successfully");
-                    addData("rejected-form", item)
-
-                })
                 let btn3 = document.createElement("button");
                 btn3.innerText = "Deleted";
-                
 
-                td6.append(btn1, btn2, btn3);
+                btn3.addEventListener("click", function () {
+                    deleteData(allUserData, index)
+                    alert('data deleted')
+                })
+
+
+                let btn4 = document.createElement("button");
+                btn4.innerText = "Hold";
+
+                td6.append(btn1, btn2, btn3, btn4);
 
                 row.append(td1, td2, td3, td4, td5, td6);
                 dataBody.append(row);
             });
         }
 
-        function addData(key, value) {
-            let newData = JSON.parse(localStorage.getItem(key)) || [];
-            newData.push(value);
-            localStorage.setItem(key, JSON.stringify(newData));
-
+        function accpetData(key, value) {
+            let acceptedStudets = JSON.parse(localStorage.getItem('admissionaccept')) || [] ////[{}]
+            acceptedStudets.push(value)///[{},{}]
+            localStorage.setItem(key, JSON.stringify(acceptedStudets))
         }
-
-
-
         function deleteData(data, index) {
             data.splice(index, 1)
-            localStorage.setItem("userDetails", JSON.stringify(data));
+            localStorage.setItem("userDetails", JSON.stringify(data))
             displayData(data);
-        }
 
-        displayData(); /////display on page load
+        }
+        displayData(); 
     </script>
 </body>
 
