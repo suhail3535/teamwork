@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        #container{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 20px;
+        }
+        img{
+            width: 300px;
+            height: 300px;
+        }
+        #container div{
+            padding: 20px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>API Call</h1>
+    <hr>
+    <table border="1" cellpadding="6" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Sr.No</th>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody id="dataBody">
+            <!-- Data will be displayed here -->
+        </tbody>
+    </table>
+    <div id="container">
+
+    </div>
+</body>
+<script>
+    let allData = []
+    let product = []
+    let result = fetch("https://jsonplaceholder.typicode.com/posts")
+    console.log('result---', result)
+    result
+        .then(response => response.json())  // Convert response to JSON
+        .then(data => {
+            allData = data
+            console.log('data', data)
+            //displayData(allData)
+
+        })
+        .catch(error => console.error("Error:", error));
+
+
+
+    function displayData(data) {
+        const dataBody = document.getElementById("dataBody");
+        dataBody.innerHTML = "";
+        data.forEach((item, index) => {
+            const row = document.createElement("tr");
+
+            const td1 = document.createElement("td");
+            td1.innerText = item.id;
+
+            const td2 = document.createElement("td");
+            td2.innerText = item.title;
+
+            const td3 = document.createElement("td");
+            td3.innerText = item.body;
+
+            row.append(td1, td2, td3);
+            dataBody.append(row);
+        });
+    }
+
+
+    async function getData() {
+        try {
+            const response = await axios.get("https://fakestoreapi.com/products");
+            console.log("Data:", response.data);
+            product = response.data
+            displayProductData(product)
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    }
+
+    getData();
+
+    console.log('product=---', product)
+    function displayProductData(productdata) {
+        let container = document.getElementById("container")
+        productdata.forEach((product, index) => {
+            let card = document.createElement('div')
+
+            let image = document.createElement('img')
+            image.src = product.image
+
+            let title = document.createElement('h2')
+            title.innerText = product.title
+
+            let price = document.createElement('p')
+            price.innerText = product.price
+            card.append(image, title, price)
+            container.append(card)
+        })
+    }
+
+</script>
+
+</html>
