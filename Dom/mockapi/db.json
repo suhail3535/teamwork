@@ -1,0 +1,12 @@
+ {
+  "users": [
+    { "id": 1, "name": "Suhail", "age": 25 },
+    { "id": 2, "name": "Aman", "age": 27 },
+    { "id": 1, "name": "Suresh", "age": 25 },
+    { "id": 2, "name": "Manish", "age": 27 }
+  ],
+    "students": [
+    { "id": 1, "name": "Suresh", "age": 25 },
+    { "id": 2, "name": "Manish", "age": 27 }
+  ]
+}
