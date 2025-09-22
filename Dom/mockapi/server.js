@@ -18,13 +18,13 @@ userForm.addEventListener("submit", async function (e) {
     e.preventDefault()  // prevent form from submitting
     let username = document.getElementById("name").value
     let userage = document.getElementById("age").value
-    
+
 
     if (userId) {
         await EditUser(userId, username, userage)
         alert("Student details updated")
-       userId = null;
-} else {
+        userId = null;
+    } else {
         // add new user
         await addUser(username, userage)
         alert('Student details submitted')
@@ -103,7 +103,7 @@ function displayProductData(productdata) {
         editBtn.addEventListener("click", () => {
             document.getElementById("name").value = product.name
             document.getElementById("age").value = product.age
-           userId = product.id;
+            userId = product.id;
 
         })
         card.append(id, name, age, deleteBtn, editBtn)
