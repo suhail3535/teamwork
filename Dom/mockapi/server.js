@@ -1,11 +1,10 @@
-
-// <-----------get Data from json server(Get Method)----------->
 let url = "http://localhost:8080/students"
-
+let userId = null;
+// <-----------Get Data from json server(Get Method)----------->
 async function fetchData() {
     try {
-        let responce = await axios.get(url)  ////fetch data from json server or api(db.json)
-        displayProductData(responce.data)
+        let response = await axios.get(url) // fetch data from json server or api(db.json)
+        displayProductData(response.data)
     } catch (error) {
         console.log(error)
     }
@@ -14,33 +13,60 @@ fetchData()
 
 
 // <----------------------Post Method--------------------->
-
 let userForm = document.getElementById("userForm")
-userForm.addEventListener("submit", function (e) {
-    e.preventDefault()  //prevent form from submitting
+userForm.addEventListener("submit", async function (e) {
+    e.preventDefault()  // prevent form from submitting
     let username = document.getElementById("name").value
     let userage = document.getElementById("age").value
-    addUser(username, userage)
-    alert('students details submitted')
+    
+
+    if (userId) {
+        await EditUser(userId, username, userage)
+        alert("Student details updated")
+       userId = null;
+} else {
+        // add new user
+        await addUser(username, userage)
+        alert('Student details submitted')
+
+        userForm.reset() // clear form
+        fetchData() // refresh list
+    }
+
+
 })
 
-
-function addUser(name, age) {
+async function addUser(name, age) {
     try {
-        let responce = axios.post('http://localhost:8080/students', {
+        await axios.post(url, {
             name: name,
             age: age
         })
     } catch (error) {
         console.log(error)
     }
-
 }
-// <------------------Delete Method------------>
 
-function deleteUser(id) {
+
+////////patch method or edit//////////  
+async function EditUser(id, name, age) {
     try {
-        let response = axios.delete(`http://localhost:8080/students/${id}`)
+        await axios.put(`${url}/${id}`, {
+            name: name,
+            age: age
+        })
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+// <------------------Delete Method------------>
+async function deleteUser(id) {
+    try {
+        await axios.delete(`${url}/${id}`)
+        fetchData()
     } catch (error) {
         console.log(error)
     }
@@ -48,17 +74,14 @@ function deleteUser(id) {
 
 
 // <-----------------Display Data------------->
-
 function displayProductData(productdata) {
     let container = document.getElementById("container")
-    productdata.forEach((product, index) => {
+    container.innerHTML = ""  // clear old data
+    productdata.forEach((product) => {
         let card = document.createElement('div')
-
-
 
         let name = document.createElement('h6')
         name.innerText = product.name
-
 
         let id = document.createElement('h2')
         id.innerText = product.id
@@ -66,14 +89,24 @@ function displayProductData(productdata) {
         let age = document.createElement('p')
         age.innerText = product.age
 
-        let button = document.createElement('button')
-        button.innerText = "Delete"
-        button.addEventListener("click", (e) => {
+        // Delete Button
+        let deleteBtn = document.createElement('button')
+        deleteBtn.innerText = "Delete"
+        deleteBtn.addEventListener("click", () => {
             deleteUser(product.id)
-            alert('user deleted')
+            alert('User deleted')
         })
 
-        card.append(id, name, age, button)
+        // Delete Button
+        let editBtn = document.createElement('button')
+        editBtn.innerText = "Edit"
+        editBtn.addEventListener("click", () => {
+            document.getElementById("name").value = product.name
+            document.getElementById("age").value = product.age
+           userId = product.id;
+
+        })
+        card.append(id, name, age, deleteBtn, editBtn)
         container.append(card)
     })
 }

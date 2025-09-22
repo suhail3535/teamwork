@@ -1,0 +1,46 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Suhail",
+      "age": 25
+    },
+    {
+      "id": "2",
+      "name": "Aman",
+      "age": 27
+    },
+    {
+      "id": "5bae",
+      "name": "Priya",
+      "age": 22
+    },
+    {
+      "id": "6a50",
+      "name": "Priya",
+      "age": 22
+    },
+    {
+      "id": "e29d",
+      "name": "Priya",
+      "age": 22
+    },
+    {
+      "id": "9270",
+      "name": "chuunu",
+      "age": "26"
+    },
+    {
+      "id": "c35e",
+      "name": "test user",
+      "age": "29"
+    }
+  ],
+  "posts": [
+    {
+      "id": "1",
+      "title": "Hello World",
+      "content": "This is my first post"
+    }
+  ]
+}

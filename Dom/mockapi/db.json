@@ -23,19 +23,14 @@
   ],
   "students": [
     {
-      "id": "1",
-      "name": "Suresh",
-      "age": 25
+      "id": "384f",
+      "name": "mohan",
+      "age": "20"
     },
     {
-      "id": "427e",
-      "name": "Suhail khan",
-      "age": "29"
-    },
-    {
-      "id": "71c2",
-      "name": "soniya",
-      "age": "22"
+      "name": "soham",
+      "age": "22",
+      "id": "fc13"
     }
   ]
 }
